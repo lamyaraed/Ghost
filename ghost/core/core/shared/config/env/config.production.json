@@ -1,12 +1,13 @@
 {
-    "database": {
-        "client": "mysql",
-        "connection": {
-            "host"     : "127.0.0.1",
-            "user"     : "root",
-            "password" : "",
-            "database" : "ghost"
-        }
+    "database": { 
+      "client": "mysql",
+      "connection": {
+        "host": "10.193.128.3",
+        "port": 3306,
+        "user": "localconnect",
+        "password": "=)K3io5(9KcJQ+yH",
+        "database": "ghost"
+      }
     },
     "paths": {
         "contentPath": "content/"
