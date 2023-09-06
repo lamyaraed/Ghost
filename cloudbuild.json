@@ -1,37 +1,13 @@
 {
   "steps": [
     {
-      "name": "gcr.io/cloud-builders/docker",
-      "args": [
-        "build",
-        "-t",
-        "us-central1-docker.pkg.dev/$PROJECT_ID/ghost-app/ghost-app:$COMMIT_SHA",
-        "."
-      ]
-    },
-    {
-      "name": "gcr.io/cloud-builders/docker",
-      "args": [
-        "push",
-        "us-central1-docker.pkg.dev/$PROJECT_ID/ghost-app/ghost-app:$COMMIT_SHA"
-      ]
-    },
-    {
-      "name": "gcr.io/cloud-builders/gcloud",
-      "entrypoint": "bash",
-      "args": [
-        "-c",
-        "gcloud compute ssh ghost-docker --zone=us-central1-c --command='sudo docker kill $(sudo docker ps -q) && docker rmi $(sudo docker images -q) && sudo gcloud auth configure-docker us-central1-docker.pkg.dev && sudo docker pull us-central1-docker.pkg.dev/$PROJECT_ID/ghost-app/ghost-app:$COMMIT_SHA &&  sudo docker images && sudo docker run -d -p 8080:8080 us-central1-docker.pkg.dev/$PROJECT_ID/ghost-app/ghost-app:$COMMIT_SHA'"
-      ]
-    },
-    {
       "name": "gcr.io/google.com/cloudsdktool/cloud-sdk",
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud config set app/cloud_build_timeout 4000 && gcloud app deploy --appyaml=app.yaml --image-url=us-central1-docker.pkg.dev/$PROJECT_ID/ghost-app/ghost-app:$COMMIT_SHA"
+        "gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy"
       ]
     }
   ],
-  "timeout": "4000s"
+  "timeout": "1600s"
 }
