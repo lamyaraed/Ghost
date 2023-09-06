@@ -6,6 +6,8 @@ RUN apk add --no-cache git
 RUN apk add --no-cache nodejs npm
 RUN apk add --no-cache python3
 RUN npm install -g yarn
+RUN npm install husky -g
+RUN npm install --production
 RUN yarn global add knex-migrator ember-cli
 
 WORKDIR /app
