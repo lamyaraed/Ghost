@@ -35,7 +35,8 @@
     "test:unit": "nx run-many -t test:unit",
     "main": "yarn main:monorepo && yarn main:submodules",
     "main:monorepo": "git checkout main && git pull ${GHOST_UPSTREAM:-origin} main && yarn",
-    "main:submodules": "git submodule sync && git submodule update && git submodule foreach \"git checkout main && git pull ${GHOST_UPSTREAM:-origin} main && yarn\""
+    "main:submodules": "git submodule sync && git submodule update && git submodule foreach \"git checkout main && git pull ${GHOST_UPSTREAM:-origin} main && yarn\"",
+    "prepare": "husky install .github/hooks"
   },
   "resolutions": {
     "@elastic/elasticsearch": "8.5.0",
