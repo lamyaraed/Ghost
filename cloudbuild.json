@@ -20,15 +20,15 @@
       "name": "gcr.io/cloud-builders/gcloud",
       "args": [
         "compute",
-        "rolling-updates",
-        "start",
+        "instance-groups",
+        "managed",
+        "rolling-action",
+        "replace",
         "ghost-mig",
-        "--version-template=latest",
-        "--zone=us-central1-c",
-        "--max-surge=1",
-        "--max-unavailable=0",
-        "--min-instance-update-time=1s",
-        "--quiet"
+        "--image",
+        "gcr.io/$PROJECT_ID/my-app",
+        "--zone",
+        "us-central1-a"
       ]
     }
   ],
