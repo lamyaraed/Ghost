@@ -21,9 +21,9 @@
       "entrypoint": "bash",
       "args": [
         "-c",
-        "gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy"
+        "gcloud config set app/cloud_build_timeout 4000 && gcloud app deploy --appyaml=app.yaml --image-url=us-central1-docker.pkg.dev/$PROJECT_ID/ghost-app/ghost-app:$COMMIT_SHA"
       ]
     }
   ],
-  "timeout": "1600s"
+  "timeout": "4000s"
 }
