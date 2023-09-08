@@ -17,11 +17,18 @@
       ]
     },
     {
-      "name": "gcr.io/google.com/cloudsdktool/cloud-sdk",
-      "entrypoint": "bash",
+      "name": "gcr.io/cloud-builders/gcloud",
       "args": [
-        "-c",
-        "gcloud config set app/cloud_build_timeout 4000 && gcloud app deploy --appyaml=app.yaml --image-url=us-central1-docker.pkg.dev/$PROJECT_ID/ghost-app/ghost-app:$COMMIT_SHA"
+        "compute",
+        "rolling-updates",
+        "start",
+        "ghost-mig",
+        "--version-template=latest",
+        "--zone=us-central1-c",
+        "--max-surge=1",
+        "--max-unavailable=0",
+        "--min-instance-update-time=1s",
+        "--quiet"
       ]
     }
   ],
